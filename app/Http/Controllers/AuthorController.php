@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Author;
+use JWTAuth;
 
 class AuthorController extends Controller
 {
@@ -83,6 +84,9 @@ class AuthorController extends Controller
         }else{
             return response(['message'=> 'Update data failed.', 'data'=> null], 406);
         }
+        public function__construct() {
+            $this->middleware('auth:api');
+        }
     }
 
     /**
@@ -101,5 +105,9 @@ class AuthorController extends Controller
             return response(['message'=> 'Remove data failed.', 'data'=> null], 406);
             
         }
-    }    
+    }   
+
+    public function __construct() {
+        $this->middleware('auth:api');
+    } 
 }
